@@ -456,7 +456,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea47c98d1a7dec4e92fc9699272c10f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneList: []
+  _sceneList:
+  - m_Handle: 0
+  - m_Handle: 0
+  - m_Handle: 0
+  _doNotDestroyObjects:
+  - {fileID: 330585543}
+  - {fileID: 832575517}
+  - {fileID: 1875731146}
 --- !u!4 &1875731148
 Transform:
   m_ObjectHideFlags: 0
