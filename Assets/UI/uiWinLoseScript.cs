@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class ui2Script : MonoBehaviour
+public class uiWinLoseScript : MonoBehaviour
 {
     [SerializeField] private SceneLoader.SceneNames nextScene;
 
@@ -13,10 +13,8 @@ public class ui2Script : MonoBehaviour
     {
         loader = FindObjectOfType<SceneLoader>();
         var root = GetComponent<UIDocument>().rootVisualElement;
-        var buttonComplete = root.Q<UnityEngine.UIElements.Button>("buttonInGameComplete");
-        buttonComplete.clickable.clickedWithEventInfo += B_clicked;
-        var buttonFail = root.Q<UnityEngine.UIElements.Button>("buttonInGameFail");
-        buttonFail.clickable.clickedWithEventInfo += F_clicked;
+        var button = root.Q<UnityEngine.UIElements.Button>("buttonInGameComplete");
+        button.clickable.clickedWithEventInfo += B_clicked;
         //DontDestroyOnLoad(gameObject);
     }
     private void B_clicked(EventBase e)
@@ -26,10 +24,5 @@ public class ui2Script : MonoBehaviour
         //SceneLoader.nextScene = SceneLoader.SceneNames.Level2Scene;
         loader.LoadScene(nextScene);
     }
-    private void F_clicked(EventBase e)
-    {
-        Button button = (Button)e.target;
-        print("Got: " + button.text);
-        loader.LoadScene(SceneLoader.SceneNames.LoseScene);
-    }
+
 }

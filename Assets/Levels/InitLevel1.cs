@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InitLevel1 : MonoBehaviour
 {
@@ -9,5 +10,9 @@ public class InitLevel1 : MonoBehaviour
     private void Awake()
     {
         Level1UI.SetActive(true);
+        var root = Level1UI.GetComponent<UIDocument>().rootVisualElement;
+        var buttonFail = root.Q<UnityEngine.UIElements.Button>("buttonInGameFail");
+        buttonFail.SetEnabled(false);
+        buttonFail.visible = false;
     }
 }
