@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,37 +6,44 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _doNotDestroyObjects;
-    private List<UnityEngine.SceneManagement.Scene> _sceneList;
-    private int _currentScene;
-    
+
+    public enum SceneNames
+    {
+        TitleScene,
+        Level1Scene,
+        Level2Scene,
+        Level3Scene,
+        WinScene,
+        LoseScene
+    }
+
+    //public static SceneNames nextScene;
+
     void Awake()
     {
-        _sceneList = new List<Scene> ();
-        _currentScene = 0;
         foreach(GameObject go in _doNotDestroyObjects)
         {
             DontDestroyOnLoad(go);
         }
-        for(int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            _sceneList.Add(SceneManager.GetSceneAt(i));
-        }
+        //nextScene = SceneNames.TitleScene;
+        LoadScene(SceneNames.TitleScene);
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator LoadYourAsyncScene(SceneNames nextScene)
     {
-        
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextScene.ToString());
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            print(asyncLoad.progress);
+            yield return null;
+        }
+        print("LOADED SCENE: " + nextScene.ToString());
     }
 
-    public void LoadNextScene()
+    public void LoadScene(SceneNames nextScene)
     {
-        if (_currentScene < _sceneList.Count)
-        {
-            _currentScene++;
-            SceneManager.LoadScene(_sceneList[_currentScene].buildIndex);
-        }
-        else
-            print("Its last scene");
+        StartCoroutine( LoadYourAsyncScene(nextScene));
     }
 }
