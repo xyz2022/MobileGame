@@ -1,26 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> _doNotDestroyObjects;
+    private List<UnityEngine.SceneManagement.Scene> _sceneList;
     private int _currentScene;
     
-    private List<Scene> _sceneList;
-    [SerializeField] private List<GameObject> _doNotDestroyObjects;
-    // Start is called before the first frame update
     void Awake()
     {
+        _sceneList = new List<Scene> ();
         _currentScene = 0;
         foreach(GameObject go in _doNotDestroyObjects)
         {
             DontDestroyOnLoad(go);
         }
-        foreach(Scene scene in _sceneList)
+        for(int i = 0; i < SceneManager.sceneCount; i++)
         {
-            _sceneList.Add(scene);
+            _sceneList.Add(SceneManager.GetSceneAt(i));
         }
     }
 
