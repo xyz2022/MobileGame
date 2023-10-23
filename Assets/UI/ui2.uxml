@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 100%;">
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 100%; flex-basis: auto; align-self: center; margin-top: 30px; margin-bottom: 30px; margin-right: 50px; margin-left: 50px;">
         <ui:Button text="COMPLETE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="buttonInGameComplete" style="width: 359px; bottom: auto; justify-content: flex-start; align-items: auto; align-self: center; position: absolute; top: 50%; height: 58px; font-size: 53px;" />
         <ui:Label tabindex="-1" text="Level 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="labelInGameLevelName" style="height: 341px; align-self: center; font-size: 81px; width: 363px; -unity-text-align: upper-center;" />
         <ui:Button text="Fail" parse-escape-sequences="true" display-tooltip-when-elided="true" name="buttonInGameFail" style="height: 71px; width: 333px; align-self: center; top: 70%; position: absolute; font-size: 53px; left: auto;" />
