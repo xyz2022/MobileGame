@@ -10,12 +10,13 @@ public class ui1Script : MonoBehaviour
     SceneLoader loader;
 
 
-    void Start()
+    void Awake()
     {
         loader = FindObjectOfType<SceneLoader>();
         var root = GetComponent<UIDocument>().rootVisualElement;
         var button = root.Q<UnityEngine.UIElements.Button>("buttonTitleStart");
         button.clickable.clickedWithEventInfo += B_clicked;
+        
         
 
 
