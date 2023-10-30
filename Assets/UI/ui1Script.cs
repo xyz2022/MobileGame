@@ -9,12 +9,15 @@ public class ui1Script : MonoBehaviour
     [SerializeField] private SceneLoader.SceneNames nextScene;
     SceneLoader loader;
 
+
     void Start()
     {
         loader = FindObjectOfType<SceneLoader>();
         var root = GetComponent<UIDocument>().rootVisualElement;
         var button = root.Q<UnityEngine.UIElements.Button>("buttonTitleStart");
         button.clickable.clickedWithEventInfo += B_clicked;
+        
+
 
     }
 
@@ -25,5 +28,10 @@ public class ui1Script : MonoBehaviour
         button.SetEnabled(false);
         //SceneLoader.nextScene = SceneLoader.SceneNames.Level1Scene;
         loader.LoadScene(nextScene);
+    }
+
+    private void Update()
+    {
+
     }
 }

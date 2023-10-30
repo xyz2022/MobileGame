@@ -10,9 +10,9 @@ public class InitLevel1 : MonoBehaviour
     private void Awake()
     {
         Level1UI.SetActive(true);
-        var root = Level1UI.GetComponent<UIDocument>().rootVisualElement;
-        var buttonFail = root.Q<UnityEngine.UIElements.Button>("buttonInGameFail");
+        /*var root = Level1UI.GetComponent<UIDocument>().rootVisualElement;
+        var buttonFail = root.Q<UnityEngine.UIElements.Button>("ButtonFail");
         buttonFail.SetEnabled(false);
-        buttonFail.visible = false;
+        buttonFail.visible = false;*/
     }
 }
